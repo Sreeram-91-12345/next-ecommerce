@@ -3,20 +3,20 @@ import React from 'react';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from './ui/button';
-//import useCartStore from '@/stores';
+import useCartStore from '@/stores/cartStore';
 import { IProduct } from '@/types/product';
 import { toast } from 'sonner';
 
 const ProductCard = ({ product }: { product: IProduct }) => {
-  //const addToCart = useCartStore((state) => state.addToCart);
+  const addToCart = useCartStore((state) => state.addToCart);
   const handleAddToCart = (product: IProduct) => {
-    // addToCart({
-    //   id: product.id,
-    //   name: product.attributeValues.p_title.value || 'Product',
-    //   price: product.attributeValues.p_price.value || 0,
-    //   quantity: 1,
-    //   image: product.attributeValues.p_image.value.downloadLink,
-    // });
+    addToCart({
+      id: product.id,
+      name: product.attributeValues.p_title.value || 'Product',
+      price: product.attributeValues.p_price.value || 0,
+      quantity: 1,
+      image: product.attributeValues.p_image.value.downloadLink,
+    });
     toast('Added to Cart', {
       description: `${product.attributeValues.p_title.value} has been added to your cart.`,
       duration: 5000,
