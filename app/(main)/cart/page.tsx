@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 import useCartStore from '@/stores/cartStore';
 import getUserSession from '@/actions/auth/getUserSession';
 import { IUserEntity } from 'oneentry/dist/users/usersInterfaces';
-//import createOrder from '@/actions/orders/create-order';
+import createOrder from '@/actions/orders/create-order';
 import { IOrderData } from 'oneentry/dist/orders/ordersInterfaces';
 
 export default function CartPage() {
@@ -66,9 +66,9 @@ export default function CartPage() {
         quantity: item.quantity,
       })),
     };
-    //const url = await createOrder(data);
+    const url = await createOrder(data);
     clearCart();
-   //router.push(url);
+   router.push(url);
   };
 
   return (
